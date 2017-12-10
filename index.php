@@ -205,10 +205,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#overview">OVERVIEW</a></li>
-        <li><a href="#search">SEARCH</a></li>
-        <li><a href="#add_edit">ADD/EDIT</a></li>
-        <li><a href="#delete">DELETE</a></li>
-        <li><a href="#checkout">CHECKOUT</a></li>
+        <li><a href="#search">SEARCH-ADD-DELETE</a></li>
       </ul>
     </div>
   </div>
@@ -233,15 +230,10 @@
   require_once('query_functions.php');
 
   $result=find_all_information();
-
-
   ?>
-
 
   <div id="content">
     <div class="Author">
-
-
       <table class="table">
         <tr class="danger">
           <th>Title_short</th>
@@ -287,8 +279,8 @@
 
 <!-- Container (search Section) -->
 <div id="search" class="container-fluid text-center">
-  <h2>SEARCH</h2>
-  <h3>Search by author name, book title, tag</h3>
+  <h2>SEARCH-CHECKOUT-RETURN</h2>
+  <h3>Search by author name, book title, tag then chekout or return</h3>
 
 
         <form  method="post" action='search.php'  id="searchform" class="form-group">
@@ -298,28 +290,6 @@
 
 
 <!-- Container (add_edit Section) -->
-<div id="add_edit" class="container-fluid text-center bg-grey">
-  <h2>ADD/EDIT- <strong>Coming soon...</strong></h2><br>
-  <h4>Edit Attributes such as location name, tag</h4>
-  <h4>Add some books, person</h4>
-
-</div>
-
-<!-- Container (delete Section) -->
-<div id="delete" class="container-fluid">
-  <div class="text-center">
-    <h2>DELETE- <strong>Coming soon...</strong></h2>
-    <h4>Delete a book, a person</h4>
-  </div>
-</div>
-
-<!-- Container (checkout Section) -->
-<div id="checkout" class="container-fluid bg-grey">
-  <h2 class="text-center">CHECKOUT <strong>Coming soon...</strong></h2>
-
-</div>
-
-
 
 <footer class="container-fluid text-center">
   <a href="#myPage" title="To Top">

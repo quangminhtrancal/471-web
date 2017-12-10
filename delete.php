@@ -1,42 +1,34 @@
 <?php
+  require_once('initialize.php');
+  require_once('query_functions.php');
+  $id = $_GET['id'] ?? 1;
+  $book=find_book_id($id);
+  $bookinfo=mysqli_fetch_assoc($book);
 
-require_once('../../../private/initialize.php');
-
-if(!isset($_GET['id'])) {
-  redirect_to(url_for('/staff/subjects/index.php'));
-}
-$id = $_GET['id'];
-
-if(is_post_request()) {
-
-  $result = delete_subject($id);
-  redirect_to(url_for('/staff/subjects/index.php'));
-
-} else {
-  $subject = find_subject_by_id($id);
-}
-
+  $person=find_all_people();
+  $person_count = mysqli_num_rows($person);
+  global $selectid;
 ?>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<?php $page_title = 'Delete Subject'; ?>
-<?php include(SHARED_PATH . '/staff_header.php'); ?>
+<div class="subject edit" class="form-group" class="container">
 
-<div id="content">
+    <h3> Book <?php echo $bookinfo['Title_short']?> ISBN <?php echo $bookinfo['ISBN_13']?> </h3>
+    <?php
+      $check=return_book($id);
+      if($check)
+        {
+        echo " Has been successfully returned!!!!";
 
-  <a class="back-link" href="<?php echo url_for('/staff/subjects/index.php'); ?>">&laquo; Back to List</a>
+        }
+        else
+        {
+        echo " Has not been successfully returned. Please contact TA!!!!";
 
-  <div class="subject delete">
-    <h1>Delete Subject</h1>
-    <p>Are you sure you want to delete this subject?</p>
-    <p class="item"><?php echo h($subject['menu_name']); ?></p>
+        }
+    ?>
 
-    <form action="<?php echo url_for('/staff/subjects/delete.php?id=' . h(u($subject['id']))); ?>" method="post">
-      <div id="operations">
-        <input type="submit" name="commit" value="Delete Subject" />
-      </div>
-    </form>
   </div>
-
-</div>
-
-<?php include(SHARED_PATH . '/staff_footer.php'); ?>
+  <div>
+    <button class="btn btn-info btn-lg" onclick="location.href='index.php'">Go Back</button>
+  </div>
